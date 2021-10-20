@@ -1,14 +1,18 @@
 
-import os, uuid, sys
+import os
+import uuid
+import sys
 from azure.storage.blob import BlockBlobService, PublicAccess
+
 
 def run_sample():
     try:
         # Create the BlockBlockService that is used to call the Blob service for the storage account
-        block_blob_service = BlockBlobService(account_name='engineeringproject', account_key='fr+DefQ1UvvZJBpYtb8kcLIfl8/ryLO2lGigl2WGbcezkESUmqDlUdG4e9MzQteT+soSaS2cIE4dr2l4kpgOBw==')
+        block_blob_service = BlockBlobService(account_name='engineeringproject',
+                                              account_key='fr+DefQ1UvvZJBpYtb8kcLIfl8/ryLO2lGigl2WGbcezkESUmqDlUdG4e9MzQteT+soSaS2cIE4dr2l4kpgOBw==')
 
         # Create a container called 'quickstartblobs'.
-        container_name ='pythontest'
+        container_name = 'pythontest'
         block_blob_service.create_container(container_name)
 
         # Set the permission so the blobs are public.
@@ -16,7 +20,7 @@ def run_sample():
 
         # Create a file in Documents to test the upload and download.
         local_path=os.path.abspath(os.path.curdir)
-        local_file_name =input("Enter file name to upload : ")
+        local_file_name = input("Enter file name to upload : ")
         full_path_to_file =os.path.join(local_path, local_file_name)
 
         # Write text to the file.
