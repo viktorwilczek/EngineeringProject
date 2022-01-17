@@ -4,10 +4,6 @@ from Cloud.upload import upload_blob
 from Cloud.download import download_blob
 
 
-# TODO
-#  
-
-
 def initialize():
     # account_name = input("Insert your azure account name: ")
     # account_key = input("Insert your azure account key: ")
@@ -16,20 +12,8 @@ def initialize():
                                               account_key='fr+DefQ1UvvZJBpYtb8kcLIfl8/ryLO2lGigl2WGbcezkESUmqDlUdG4e9MzQteT+soSaS2cIE4dr2l4kpgOBw==')
 
 
-def list_blobs():
-    return 4
-
-
 # Main method.
 if __name__ == '__main__':
-
-    global block_blob_service
-    menu_options = {
-        1: '1 - uploads ',
-        2: '2 - download',
-        3: '3 - setup',
-        4: '4 - exit',
-    }
 
     block_blob_service_init = initialize()
 
