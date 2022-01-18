@@ -3,6 +3,12 @@ from azure.storage.blob import BlockBlobService, PublicAccess
 from EncryptDecrypt.encrypt import aes_encrypt, xor_encrypt
 
 
+def print_containers(block_blob_service_init):
+    block_blob_service = block_blob_service_init
+    containers = block_blob_service.list_containers()
+    return containers
+
+
 def upload_blob(block_blob_service_init):
     # Create the BlockBlockService that is used to call the Blob service for the storage account
     block_blob_service = block_blob_service_init
