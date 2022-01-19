@@ -30,13 +30,13 @@
    <property name="geometry">
     <rect>
      <x>540</x>
-     <y>320</y>
+     <y>310</y>
      <width>451</width>
      <height>32</height>
     </rect>
    </property>
    <property name="text">
-    <string>Decrypt</string>
+    <string>Decrypt and Download</string>
    </property>
    <property name="autoDefault">
     <bool>false</bool>
@@ -52,7 +52,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Encrypt</string>
+    <string>Encrypt and Upload</string>
    </property>
    <property name="autoDefault">
     <bool>false</bool>
@@ -165,7 +165,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Select</string>
+    <string>Browse</string>
    </property>
    <property name="autoDefault">
     <bool>false</bool>
@@ -197,7 +197,7 @@
     </rect>
    </property>
    <property name="text">
-    <string/>
+    <string>Info</string>
    </property>
    <property name="autoDefault">
     <bool>false</bool>
@@ -265,22 +265,6 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_5">
-   <property name="geometry">
-    <rect>
-     <x>540</x>
-     <y>110</y>
-     <width>451</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Select</string>
-   </property>
-   <property name="autoDefault">
-    <bool>false</bool>
-   </property>
-  </widget>
   <widget class="QComboBox" name="comboBox_3">
    <property name="geometry">
     <rect>
@@ -318,7 +302,7 @@
    <property name="geometry">
     <rect>
      <x>540</x>
-     <y>280</y>
+     <y>270</y>
      <width>451</width>
      <height>31</height>
     </rect>
@@ -331,7 +315,7 @@
    <property name="geometry">
     <rect>
      <x>540</x>
-     <y>260</y>
+     <y>250</y>
      <width>151</width>
      <height>16</height>
     </rect>
@@ -353,11 +337,21 @@
     <string>Select a file</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_6">
+  <widget class="QTextEdit" name="textEdit">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>140</y>
+     <width>451</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_11">
    <property name="geometry">
     <rect>
      <x>540</x>
-     <y>210</y>
+     <y>110</y>
      <width>451</width>
      <height>32</height>
     </rect>
@@ -369,14 +363,20 @@
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QTextEdit" name="textEdit">
+  <widget class="QPushButton" name="pushButton_5">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>140</y>
+     <x>540</x>
+     <y>210</y>
      <width>451</width>
-     <height>31</height>
+     <height>32</height>
     </rect>
+   </property>
+   <property name="text">
+    <string>Delete</string>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
    </property>
   </widget>
  </widget>

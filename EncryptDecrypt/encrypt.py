@@ -4,8 +4,8 @@ from base64 import b64encode
 import time
 
 
-def aes_encrypt(file_path):
-    key = input('insert password: ')
+def aes_encrypt(file_path, key):
+
     key = key.encode('UTF-8')
     key = pad(key, AES.block_size)
     start = time.time()
@@ -25,6 +25,7 @@ def aes_encrypt(file_path):
     data.close()
     end = time.time()
     print('time finish: ' + str(end - start))
+    print(file_path + '.enc')
     return file_path + '.enc'
 
 
