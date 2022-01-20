@@ -8,8 +8,8 @@ class LoginPage(QDialog):
     def __init__(self):
         super(LoginPage, self).__init__()
         loadUi('loginpage.ui', self)
-        self.pushButton.clicked.connect(self.retrieveCredentials)
-        self.pushButton_2.clicked.connect(self.closeDialog)
+        self.pushButton.clicked.connect(self.closeDialog)
+
 
     def retrieveCredentials(self):
         name = self.lineEdit.text()

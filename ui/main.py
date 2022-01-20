@@ -3,7 +3,7 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QApplication, QDialog, QFileDialog
 from PyQt5.uic import loadUi
 from PyQt5 import QtCore, QtGui
-from Cloud.util import initialize, list_files, print_containers, delete_blob
+from Cloud.util import initialize, list_files, print_containers, delete_blob, delete_container
 from login import LoginPage
 from error import ErrorPage
 from Cloud.upload import upload_blob
@@ -23,6 +23,7 @@ class MainPage(QDialog):
         self.pushButton_4.clicked.connect(self.decrypt_file)
         self.pushButton_10.clicked.connect(self.close)
         self.pushButton_5.clicked.connect(self.delete_file)
+        self.pushButton_12.clicked.connect(self.delete_container)
 
     def update_login(self):
         self.connection = self.retrieveLogin()
@@ -46,11 +47,14 @@ class MainPage(QDialog):
         self.textEdit.setText(filename)
 
     def select_container(self):
-        container = self.comboBox_4.currentText()
-        files = list_files(container, self.connection)
-        self.comboBox_3.clear()
-        for i in files:
-            self.comboBox_3.addItem(str(i.name))
+        if self.comboBox_4.count() <= 0:
+            pass
+        else:
+            container = self.comboBox_4.currentText()
+            files = list_files(container, self.connection)
+            self.comboBox_3.clear()
+            for i in files:
+                self.comboBox_3.addItem(str(i.name))
 
     def encrypt_file(self):
         #if [x for x in (self.comboBox.currentText(), self.textEdit.toPlainText(), self.lineEdit.text(), )
@@ -72,13 +76,43 @@ class MainPage(QDialog):
             self.lineEdit_2.clear()
 
     def decrypt_file(self):
-        download_blob(self.connection, self.comboBox_4.currentText(), self.comboBox_3.currentText(),
-                      self.lineEdit_4.text())
-        self.lineEdit_4.clear()
+        if self.comboBox_4.count() <= 0:
+            pass
+        elif self.comboBox_3.count() <= 0:
+            pass
+        elif not self.lineEdit_4.text():
+            pass
+        else:
+            download_blob(self.connection, self.comboBox_4.currentText(), self.comboBox_3.currentText(),
+                          self.lineEdit_4.text())
+            self.lineEdit_4.clear()
 
     def delete_file(self):
-        delete_blob(self.connection, self.comboBox_4.currentText(), self.comboBox_3.currentText())
-        self.select_container()
+        if self.comboBox_3.count() <= 0:
+            pass
+        else:
+            delete_blob(self.connection, self.comboBox_4.currentText(), self.comboBox_3.currentText())
+            self.select_container()
+
+
+    def delete_container(self):
+        if self.comboBox_4.count() <= 0:
+            pass
+        else:
+            delete_container(self.connection, self.comboBox_4.currentText())
+            containers = print_containers(self.connection)
+            self.comboBox.clear()
+            self.comboBox_4.clear()
+            for i in containers:
+                self.comboBox.addItem(str(i.name))
+                self.comboBox_4.addItem(str(i.name))
+
+    def add_container(self):
+        if self.textEdit_2.toPlainText == "Insert new container name...":
+            pass
+        else:
+
+
 
 app = QApplication(sys.argv)
 widget = MainPage()

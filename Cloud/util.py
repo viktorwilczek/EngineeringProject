@@ -22,3 +22,10 @@ def delete_blob(block_blob_service_init, container, blob_name):
     block_blob_service = block_blob_service_init
     block_blob_service.delete_blob(container, blob_name)
 
+
+def delete_container(block_blob_service_init, container):
+    block_blob_service = block_blob_service_init
+    block_blob_service.delete_container(container)
+
+
+def create_container(block_blob_service_init, container):
