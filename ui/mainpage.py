@@ -112,14 +112,13 @@ class Ui_Dialog(object):
         self.pushButton_12.setGeometry(QtCore.QRect(540, 140, 451, 32))
         self.pushButton_12.setAutoDefault(False)
         self.pushButton_12.setObjectName("pushButton_12")
-        self.textEdit_2 = QtWidgets.QTextEdit(Dialog)
-        self.textEdit_2.setGeometry(QtCore.QRect(30, 110, 251, 31))
-        self.textEdit_2.setOverwriteMode(False)
-        self.textEdit_2.setObjectName("textEdit_2")
         self.pushButton_6 = QtWidgets.QPushButton(Dialog)
         self.pushButton_6.setGeometry(QtCore.QRect(280, 110, 201, 32))
         self.pushButton_6.setAutoDefault(False)
         self.pushButton_6.setObjectName("pushButton_6")
+        self.textEdit_2 = QtWidgets.QTextEdit(Dialog)
+        self.textEdit_2.setGeometry(QtCore.QRect(30, 110, 241, 31))
+        self.textEdit_2.setObjectName("textEdit_2")
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -145,9 +144,4 @@ class Ui_Dialog(object):
         self.pushButton_11.setText(_translate("Dialog", "Confirm container"))
         self.pushButton_5.setText(_translate("Dialog", "Delete file"))
         self.pushButton_12.setText(_translate("Dialog", "Delete container"))
-        self.textEdit_2.setHtml(_translate("Dialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'.AppleSystemUIFont\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Insert new container name...</p></body></html>"))
         self.pushButton_6.setText(_translate("Dialog", "Add container"))

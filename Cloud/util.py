@@ -29,3 +29,6 @@ def delete_container(block_blob_service_init, container):
 
 
 def create_container(block_blob_service_init, container):
+    block_blob_service = block_blob_service_init
+    block_blob_service.create_container(container)
+    block_blob_service.set_container_acl(container, public_access=PublicAccess.Container)
