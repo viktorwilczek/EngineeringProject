@@ -3,7 +3,7 @@ import time
 
 from azure.common import AzureMissingResourceHttpError
 from azure.storage.blob import BlockBlobService, PublicAccess
-from EncryptDecrypt.decrypt import aes_decrypt, xor_decrypt
+from encrypt_decrypt.decrypt import aes_decrypt, xor_decrypt
 
 
 def download_blob(block_blob_service_init, container, file_name, key):

@@ -3,11 +3,11 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QApplication, QDialog, QFileDialog
 from PyQt5.uic import loadUi
 from PyQt5 import QtCore, QtGui
-from Cloud.util import initialize, list_files, print_containers, delete_blob, delete_container, create_container
+from cloud.util import initialize, list_files, print_containers, delete_blob, delete_container, create_container
 from login import LoginPage
 from error import ErrorPage
-from Cloud.upload import upload_blob
-from Cloud.download import download_blob
+from cloud.upload import upload_blob
+from cloud.download import download_blob
 
 
 class MainPage(QDialog):

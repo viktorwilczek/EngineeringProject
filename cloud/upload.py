@@ -1,7 +1,7 @@
 import os
 from azure.storage.blob import BlockBlobService, PublicAccess
 from pathlib import Path
-from EncryptDecrypt.encrypt import aes_encrypt, xor_encrypt
+from encrypt_decrypt.encrypt import aes_encrypt, xor_encrypt
 
 
 def upload_blob(block_blob_service_init, container, full_path_to_file, key):

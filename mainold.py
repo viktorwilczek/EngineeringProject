@@ -1,7 +1,7 @@
 import sys
 from azure.storage.blob import BlockBlobService, PublicAccess
-from Cloud.upload import upload_blob
-from Cloud.download import download_blob
+from cloud.upload import upload_blob
+from cloud.download import download_blob
 
 
 def initialize():

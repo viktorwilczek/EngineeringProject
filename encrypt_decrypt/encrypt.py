@@ -25,7 +25,6 @@ def aes_encrypt(file_path, key):
     data.close()
     end = time.time()
     print('time finish: ' + str(end - start))
-    print(file_path + '.enc')
     return file_path + '.enc'
 
 
