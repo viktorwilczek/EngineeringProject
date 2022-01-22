@@ -1,11 +1,10 @@
 import sys
-from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QApplication, QDialog, QFileDialog
 from PyQt5.uic import loadUi
-from PyQt5 import QtCore, QtGui
 from cloud.util import initialize, list_files, print_containers, delete_blob, delete_container, create_container
 from login import LoginPage
 from error import ErrorPage
+from info import InfoPage
 from cloud.upload import upload_blob
 from cloud.download import download_blob
 
@@ -25,19 +24,16 @@ class MainPage(QDialog):
         self.pushButton_5.clicked.connect(self.delete_file)
         self.pushButton_12.clicked.connect(self.delete_container)
         self.pushButton_6.clicked.connect(self.add_container)
+        self.pushButton_9.clicked.connect(self.open_info)
 
     def update_login(self):
-        self.connection = self.retrieveLogin()
+        self.connection = self.retrieve_login()
         self.update_containers()
-        #containers = print_containers(self.connection)
-        #for i in containers:
-            #self.comboBox.addItem(str(i.name))
-            #self.comboBox_4.addItem(str(i.name))
 
-    def retrieveLogin(self):
+    def retrieve_login(self):
         login = LoginPage()
         login.exec_()
-        account_name, account_key = login.retrieveCredentials()
+        account_name, account_key = login.retrieve_credentials()
         return initialize(account_name, account_key)
 
     def open_file(self):
@@ -101,12 +97,10 @@ class MainPage(QDialog):
 
     def add_container(self):
         if not self.textEdit_2.toPlainText():
-            print("empty")
             pass
         elif self.connection == "empty":
             pass
         else:
-            print("create container "+ str(self.textEdit_2.toPlainText))
             create_container(self.connection, self.textEdit_2.toPlainText())
             self.update_containers()
             self.textEdit_2.clear()
@@ -125,6 +119,11 @@ class MainPage(QDialog):
         self.comboBox_3.clear()
         for i in files:
             self.comboBox_3.addItem(str(i.name))
+
+    def open_info(self):
+        info = InfoPage()
+        info.exec_()
+
 
 app = QApplication(sys.argv)
 widget = MainPage()
