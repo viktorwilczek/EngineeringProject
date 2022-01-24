@@ -3,22 +3,22 @@ from Crypto.Util.Padding import pad, unpad
 from base64 import b64decode
 
 
-def aes_decrypt(file_path, key):
-    key = key.encode('UTF-8')
-    key = pad(key, AES.block_size)
-    with open(file_path, 'r') as entry:
+def aes_decrypt(to_decrypt, password):
+    password = password.encode('UTF-8')
+    password = pad(password, AES.block_size)
+    with open(to_decrypt, 'r') as content:
         try:
-            data = entry.read()
-            length = len(data)
-            iv = data[:24]
-            iv = b64decode(iv)
-            ciphertext = data[24:length]
-            ciphertext = b64decode(ciphertext)
-            cipher = AES.new(key, AES.MODE_CFB, iv)
-            decrypted = cipher.decrypt(ciphertext)
-            decrypted = unpad(decrypted, AES.block_size)
-            with open(file_path, 'wb') as data:
-                data.write(decrypted)
-            data.close()
+            file = content.read()
+            length = len(file)
+            init_vector = file[:24]
+            init_vector = b64decode(init_vector)
+            coded_text = file[24:length]
+            coded_text = b64decode(coded_text)
+            code = AES.new(password, AES.MODE_CFB, init_vector)
+            clear = code.decrypt(coded_text)
+            clear = unpad(clear, AES.block_size)
+            with open(to_decrypt, 'wb') as file:
+                file.write(clear)
+            file.close()
         except(ValueError, KeyError):
             pass

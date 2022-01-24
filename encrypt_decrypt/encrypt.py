@@ -4,19 +4,19 @@ from base64 import b64encode
 import time
 
 
-def aes_encrypt(file_path, key):
-    key = key.encode('UTF-8')
-    key = pad(key, AES.block_size)
-    with open(file_path, 'rb') as entry:
-        data = entry.read()
-        cipher = AES.new(key, AES.MODE_CFB)
-        ciphertext = cipher.encrypt(pad(data, AES.block_size))
-        iv = b64encode(cipher.iv).decode('UTF-8')
-        ciphertext = b64encode(ciphertext).decode('UTF-8')
-        to_write = iv + ciphertext
-    entry.close()
+def aes_encrypt(to_encrypt, password):
+    password = password.encode('UTF-8')
+    password = pad(password, AES.block_size)
+    with open(to_encrypt, 'rb') as content:
+        file = content.read()
+        code = AES.new(password, AES.MODE_CFB)
+        coded_text = code.encrypt(pad(file, AES.block_size))
+        init_vector = b64encode(code.iv).decode('UTF-8')
+        coded_text = b64encode(coded_text).decode('UTF-8')
+        encoded = init_vector + coded_text
+    content.close()
 
-    with open(file_path + '.enc', 'w') as data:
-        data.write(to_write)
-    data.close()
-    return file_path + '.enc'
+    with open(to_encrypt + '.enc', 'w') as file:
+        file.write(encoded)
+    file.close()
+    return to_encrypt + '.enc'
